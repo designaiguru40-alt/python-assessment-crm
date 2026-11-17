@@ -1,0 +1,3684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum AI • Python 3 Assessment & Student CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+/* Quantum AI Python Assessment & CRM Portal Styles */
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --bg-input: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-light: rgba(99, 102, 241, 0.15);
+  --success: #10b981;
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --danger: #ef4444;
+  --danger-bg: rgba(239, 68, 68, 0.15);
+  --warning: #f59e0b;
+  --warning-bg: rgba(245, 158, 11, 0.15);
+  --info: #0ea5e9;
+  --border: #334155;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Navigation */
+header.app-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.header-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.nav-tabs {
+  display: flex;
+  background: var(--bg-primary);
+  padding: 0.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.nav-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.nav-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.nav-tab-btn.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-btn {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+/* Main Container */
+main.app-main {
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-section {
+  display: none;
+  width: 100%;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.view-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================
+   VIEW 1: REGISTRATION / WELCOME SCREEN
+   ========================================================== */
+.welcome-card-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  align-items: start;
+}
+
+.welcome-info {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  box-shadow: var(--shadow);
+}
+
+.exam-pill {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+.welcome-info h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #ffffff 40%, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-info p.lead {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.guidelines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.guideline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.guideline-item .icon {
+  color: var(--success);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.stat-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  padding: 0.85rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.stat-box .num {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.stat-box .label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.reg-form-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.reg-form-card h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.reg-form-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.9rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+/* ==========================================================
+   VIEW 2: LIVE EXAMINATION INTERFACE
+   ========================================================== */
+.exam-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Exam Main Area */
+.exam-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.exam-meta-bar {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.student-badge-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.student-meta-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.student-meta-roll {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.timer-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--info);
+}
+
+.timer-box.timer-warning {
+  color: var(--warning);
+  border-color: var(--warning);
+  background: var(--warning-bg);
+}
+
+.timer-box.timer-danger {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 1; }
+  to { opacity: 0.6; }
+}
+
+/* Question Card */
+.question-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.question-number-badge {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.category-tag {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.question-prompt {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Monospace Code Display */
+.code-wrapper {
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.code-header {
+  background: #111827;
+  padding: 0.4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1f2937;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-family: var(--font-mono);
+}
+
+.code-content {
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #38bdf8;
+  white-space: pre;
+  line-height: 1.6;
+}
+
+/* Options Grid */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.option-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.option-card:hover {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.option-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+.option-letter {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.option-card.selected .option-letter {
+  background: var(--accent);
+  color: white;
+}
+
+.option-text {
+  font-size: 1rem;
+  color: var(--text-primary);
+  flex: 1;
+  font-family: var(--font-mono);
+}
+
+/* Exam Action Toolbar */
+.exam-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  gap: 1rem;
+}
+
+.btn-secondary {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--text-secondary);
+  background: var(--border);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-review {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning);
+  color: var(--warning);
+}
+
+.btn-review.marked {
+  background: var(--warning);
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.6);
+}
+
+/* ==========================================================
+   SIDEBAR: QUESTION PALETTE & PROGRESS
+   ========================================================== */
+.exam-sidebar {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+}
+
+.palette-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot.answered { background: var(--success); }
+.dot.unanswered { background: var(--border); }
+.dot.marked { background: var(--warning); }
+.dot.current { background: var(--accent); }
+
+.palette-filters {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.filter-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.45rem;
+  overflow-y: auto;
+  max-height: 380px;
+  padding-right: 0.25rem;
+}
+
+.palette-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.palette-btn:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.palette-btn.current {
+  border-color: var(--accent);
+  color: white;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.palette-btn.answered {
+  background: var(--success-bg);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.palette-btn.marked {
+  background: var(--warning-bg);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+/* ==========================================================
+   VIEW 3: SCORECARD & PERFORMANCE ANALYTICS
+   ========================================================== */
+.scorecard-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.scorecard-hero {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.scorecard-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+  border-radius: 50%;
+}
+
+.result-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.4rem 1.25rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.badge-distinction { background: var(--success-bg); color: var(--success); border: 1px solid var(--success); }
+.badge-pass { background: var(--info); color: white; }
+.badge-fail { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger); }
+
+.scorecard-hero h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.student-tagline {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.score-display-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.score-number {
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #6366f1, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.score-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.score-percentage {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.metric-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.metric-card .val {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.metric-card.correct .val { color: var(--success); }
+.metric-card.incorrect .val { color: var(--danger); }
+.metric-card.skipped .val { color: var(--text-muted); }
+.metric-card.time .val { color: var(--info); font-family: var(--font-mono); }
+
+.metric-card .lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Category Breakdown */
+.breakdown-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.breakdown-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.category-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cat-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cat-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cat-bar-bg {
+  height: 8px;
+  background: var(--bg-primary);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.cat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #38bdf8);
+  border-radius: 9999px;
+  transition: width 0.6s ease;
+}
+
+/* Result Actions */
+.scorecard-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================
+   VIEW 4: QUESTION-BY-QUESTION REVIEW
+   ========================================================== */
+.review-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.review-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-item-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-item-card.is-correct {
+  border-left: 5px solid var(--success);
+}
+
+.review-item-card.is-incorrect {
+  border-left: 5px solid var(--danger);
+}
+
+.review-item-card.is-skipped {
+  border-left: 5px solid var(--text-muted);
+}
+
+.review-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.review-badge.correct { background: var(--success-bg); color: var(--success); }
+.review-badge.incorrect { background: var(--danger-bg); color: var(--danger); }
+.review-badge.skipped { background: var(--bg-input); color: var(--text-muted); }
+
+.review-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+.review-option {
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.review-option.correct-answer {
+  background: var(--success-bg);
+  border-color: var(--success);
+  color: var(--success);
+  font-weight: 700;
+}
+
+.review-option.wrong-selection {
+  background: var(--danger-bg);
+  border-color: var(--danger);
+  color: var(--danger);
+  text-decoration: line-through;
+}
+
+/* ==========================================================
+   VIEW 5: TEACHER CRM DASHBOARD
+   ========================================================== */
+.crm-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.crm-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.crm-header-row h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.crm-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.crm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.crm-stat-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.crm-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.crm-stat-info .num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.crm-stat-info .lbl {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.crm-table-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.crm-table-controls {
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-input {
+  max-width: 350px;
+}
+
+.crm-table-wrapper {
+  overflow-x: auto;
+}
+
+table.crm-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+table.crm-table th {
+  background: var(--bg-primary);
+  padding: 0.85rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+}
+
+table.crm-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+table.crm-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.status-pill.distinction { background: var(--success-bg); color: var(--success); }
+.status-pill.pass { background: rgba(14, 165, 233, 0.15); color: var(--info); }
+.status-pill.fail { background: var(--danger-bg); color: var(--danger); }
+
+.table-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.btn-icon {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+/* ==========================================================
+   PRINT STYLES FOR OFFICIAL SCORECARD
+   ========================================================== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  header.app-header,
+  .scorecard-actions,
+  .nav-tabs,
+  .btn-primary,
+  .btn-secondary {
+    display: none !important;
+  }
+  .scorecard-hero {
+    background: white !important;
+    color: black !important;
+    border: 2px solid #000 !important;
+    box-shadow: none !important;
+  }
+  .score-number {
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+  }
+  .metric-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .exam-layout {
+    grid-template-columns: 1fr;
+  }
+  .exam-sidebar {
+    position: static;
+    max-height: none;
+  }
+  .welcome-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .crm-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .crm-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Top App Navigation Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <span class="brand-badge">QUANTUM AI</span>
+        <div>
+          <div class="brand-title">Python 3 Assessment Engine</div>
+          <span class="brand-subtitle">101 MCQs Automated Evaluation & Student CRM</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs: Test vs CRM -->
+      <nav class="nav-tabs">
+        <button id="tab-test" class="nav-tab-btn active">
+          📝 Student Test Portal
+        </button>
+        <button id="tab-crm" class="nav-tab-btn">
+          📊 Faculty CRM & Records
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button id="btn-fullscreen" class="header-btn" title="Toggle Fullscreen" onclick="toggleFullScreen()">⛶</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="app-main">
+
+    <!-- ==========================================================
+         VIEW 1: WELCOME & REGISTRATION SCREEN
+         ========================================================== -->
+    <section id="view-welcome" class="view-section active">
+      <div class="welcome-card-grid">
+        <!-- Guidelines & Exam Info -->
+        <div class="welcome-info">
+          <span class="exam-pill">Official Certification Exam</span>
+          <h1>Python 3 Competency Test</h1>
+          <p class="lead">Beginner to Intermediate Python 3 assessment covering Core Syntax, Data Structures, Logic, and Built-ins.</p>
+
+          <div class="guidelines-list">
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>101 Verified Questions:</strong> Real industry questions from Python3 101 MCQ (S. C. Lewis).</div>
+            </div>
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>Instant Automated Scoring:</strong> Exact answer key evaluation with topic-by-topic analytics.</div>
+            </div>
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>No Negative Marking:</strong> 1 mark per correct answer. All questions are multiple choice (A/B/C/D).</div>
+            </div>
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>Official Scorecard & Certificate:</strong> Downloadable and printable report for student portfolio.</div>
+            </div>
+          </div>
+
+          <div class="stats-ribbon">
+            <div class="stat-box">
+              <div class="num">101</div>
+              <div class="label">Total Questions</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">90 Mins</div>
+              <div class="label">Time Allowed</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">50%</div>
+              <div class="label">Passing Score</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Registration Form -->
+        <div class="reg-form-card">
+          <h2>Student Registration</h2>
+          <p>Bache ki details daalkar test shuru kijiye:</p>
+
+          <form id="student-reg-form">
+            <div class="form-group">
+              <label for="input-name">Student Full Name *</label>
+              <input type="text" id="input-name" class="form-input" placeholder="e.g. Pooja Sharma / Arjun Verma" required>
+            </div>
+
+            <div class="form-group">
+              <label for="input-roll">Roll No / Student ID</label>
+              <input type="text" id="input-roll" class="form-input" placeholder="e.g. QA-2026-089">
+            </div>
+
+            <div class="form-group">
+              <label for="input-batch">Course / Batch</label>
+              <select id="input-batch" class="form-input">
+                <option value="Python 3 & SQL Foundation">Python 3 & SQL Foundation</option>
+                <option value="Data Analytics Professional">Data Analytics Professional</option>
+                <option value="Generative AI & Machine Learning">Generative AI & Machine Learning</option>
+                <option value="Weekend Masterclass Batch">Weekend Masterclass Batch</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="input-duration">Test Time Limit</label>
+              <select id="input-duration" class="form-input">
+                <option value="90">90 Minutes (Standard Exam)</option>
+                <option value="60">60 Minutes (Fast Track)</option>
+                <option value="120">120 Minutes (Extended)</option>
+                <option value="999">Unlimited Practice Time</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              🚀 Start Examination
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 2: LIVE TEST TAKING INTERFACE
+         ========================================================== -->
+    <section id="view-exam" class="view-section">
+      <div class="exam-layout">
+        
+        <!-- Left: Current Question Area -->
+        <div class="exam-main">
+          <!-- Meta Bar -->
+          <div class="exam-meta-bar">
+            <div class="student-badge-info">
+              <div id="exam-student-avatar" class="avatar-circle">S</div>
+              <div>
+                <div id="exam-student-name" class="student-meta-name">Student Name</div>
+                <div id="exam-student-roll" class="student-meta-roll">Roll: QA-101 • Batch</div>
+              </div>
+            </div>
+            <div id="exam-timer" class="timer-box">⏱️ 90:00</div>
+          </div>
+
+          <!-- Question Card -->
+          <div class="question-card">
+            <div class="question-header">
+              <span id="q-number" class="question-number-badge">Question 1 of 101</span>
+              <span id="q-category" class="category-tag">Arithmetic & Operators</span>
+            </div>
+
+            <div id="q-prompt" class="question-prompt">
+              What will be the output after the following statements?
+            </div>
+
+            <!-- Monospace Code Box -->
+            <div id="q-code-wrapper" class="code-wrapper">
+              <div class="code-header">
+                <span>Python 3 Code</span>
+                <span style="font-size: 0.7rem; color: #64748b;">Snippet</span>
+              </div>
+              <pre id="q-code" class="code-content"></pre>
+            </div>
+
+            <!-- Options Grid (A, B, C, D) -->
+            <div id="q-options-grid" class="options-grid"></div>
+          </div>
+
+          <!-- Exam Action Toolbar -->
+          <div class="exam-actions">
+            <div style="display: flex; gap: 0.5rem;">
+              <button id="btn-prev" class="btn-secondary">⬅️ Previous</button>
+              <button id="btn-clear" class="btn-secondary">Clear Choice</button>
+              <button id="btn-mark" class="btn-secondary btn-review">☆ Mark Review</button>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button id="btn-next" class="btn-secondary">Next ➡️</button>
+              <button id="btn-submit-exam" class="btn-submit">Submit Test 🏁</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Palette Sidebar -->
+        <aside class="exam-sidebar">
+          <div class="palette-stats">
+            <div class="stat-pill"><span class="dot answered"></span> Answered: <b id="stat-answered-count">0</b></div>
+            <div class="stat-pill"><span class="dot unanswered"></span> Unanswered: <b id="stat-unanswered-count">101</b></div>
+            <div class="stat-pill"><span class="dot marked"></span> Marked: <b id="stat-marked-count">0</b></div>
+            <div class="stat-pill"><span class="dot current"></span> Current Q</div>
+          </div>
+
+          <div class="palette-filters">
+            <button class="filter-btn active" data-filter="all">All (101)</button>
+            <button class="filter-btn" data-filter="answered">Answered</button>
+            <button class="filter-btn" data-filter="unanswered">Pending</button>
+            <button class="filter-btn" data-filter="marked">Marked</button>
+          </div>
+
+          <!-- 101 Question Palette Grid -->
+          <div id="exam-palette" class="palette-grid"></div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 3: SCORECARD & PERFORMANCE ANALYTICS
+         ========================================================== -->
+    <section id="view-scorecard" class="view-section">
+      <div class="scorecard-container">
+        
+        <div class="scorecard-hero">
+          <span id="res-badge" class="result-badge badge-distinction">🌟 Distinction</span>
+          <h1 id="res-student-title">Student Assessment Scorecard</h1>
+          <p id="res-tagline" class="student-tagline">Quantum AI Certification Performance Report</p>
+
+          <div class="score-display-wrapper">
+            <span id="res-score" class="score-number">92</span>
+            <span class="score-total">/ 101</span>
+          </div>
+          <div id="res-percentage" class="score-percentage">Percentage: 91.1% (Distinction)</div>
+
+          <div class="metrics-row">
+            <div class="metric-card correct">
+              <div id="res-correct" class="val">92</div>
+              <div class="lbl">Correct</div>
+            </div>
+            <div class="metric-card incorrect">
+              <div id="res-incorrect" class="val">6</div>
+              <div class="lbl">Incorrect</div>
+            </div>
+            <div class="metric-card skipped">
+              <div id="res-skipped" class="val">3</div>
+              <div class="lbl">Skipped</div>
+            </div>
+            <div class="metric-card time">
+              <div id="res-time" class="val">48m 12s</div>
+              <div class="lbl">Time Taken</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic-wise Breakdown -->
+        <div class="breakdown-card">
+          <h3>📊 Topic-Wise Mastery Breakdown</h3>
+          <div id="category-breakdown-bars" class="category-bars"></div>
+        </div>
+
+        <!-- Scorecard Action Buttons -->
+        <div class="scorecard-actions">
+          <button id="btn-print-scorecard" class="btn-secondary">🖨️ Print / Download PDF</button>
+          <button id="btn-review-answers" class="btn-secondary">🔍 Review All 101 Answers</button>
+          <button id="btn-retake-test" class="btn-primary" style="width: auto; padding: 0.75rem 1.75rem;">🔄 Start New Test</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 4: QUESTION-BY-QUESTION REVIEW
+         ========================================================== -->
+    <section id="view-review" class="view-section">
+      <div class="review-container">
+        <div class="review-header-bar">
+          <div>
+            <h2 style="font-size: 1.35rem; font-weight: 800;">Answer Key & Detailed Solution Review</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Official PDF Answer Key ke anusar evaluation</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="filter-btn review-filter-btn active" data-filter="all">All (101)</button>
+            <button class="filter-btn review-filter-btn" data-filter="incorrect">Incorrect Only</button>
+            <button class="filter-btn review-filter-btn" data-filter="correct">Correct Only</button>
+            <button class="filter-btn review-filter-btn" data-filter="skipped">Skipped Only</button>
+          </div>
+        </div>
+
+        <div id="review-items-container" class="review-items-list"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 5: TEACHER CRM DASHBOARD
+         ========================================================== -->
+    <section id="view-crm" class="view-section">
+      <div class="crm-container">
+        
+        <div class="crm-header-row">
+          <div>
+            <h1>Faculty Assessment CRM</h1>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Track all student tests, scores, batch averages, and export records.</p>
+          </div>
+
+          <div class="crm-toolbar">
+            <button id="btn-export-csv" class="btn-secondary">📥 Export to CSV (Excel)</button>
+            <button id="btn-clear-crm" class="btn-secondary" style="color: var(--danger);">🗑️ Clear CRM Data</button>
+          </div>
+        </div>
+
+        <!-- CRM Stat Cards -->
+        <div class="crm-stats-grid">
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">👥</div>
+            <div class="crm-stat-info">
+              <div id="crm-total-count" class="num">0</div>
+              <div class="lbl">Students Tested</div>
+            </div>
+          </div>
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">📈</div>
+            <div class="crm-stat-info">
+              <div id="crm-avg-score" class="num">0%</div>
+              <div class="lbl">Batch Average</div>
+            </div>
+          </div>
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">🏆</div>
+            <div class="crm-stat-info">
+              <div id="crm-high-score" class="num">0 / 101</div>
+              <div class="lbl">Highest Score</div>
+            </div>
+          </div>
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">🎯</div>
+            <div class="crm-stat-info">
+              <div id="crm-pass-rate" class="num">0%</div>
+              <div class="lbl">Pass Rate (>=50%)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRM Submissions Table -->
+        <div class="crm-table-card">
+          <div class="crm-table-controls">
+            <input type="text" id="crm-search" class="form-input search-input" placeholder="🔍 Search student name, roll no, or batch...">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Auto-saved locally in browser</span>
+          </div>
+
+          <div class="crm-table-wrapper">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Roll / ID</th>
+                  <th>Batch</th>
+                  <th>Score</th>
+                  <th>Time Taken</th>
+                  <th>Result</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="crm-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Fullscreen helper -->
+  <script>
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+  </script>
+
+  <!-- Load Data and Scripts -->
+  <script>
+// Python 3 - 101 MCQ Database
+// Extracted from Python3 101 MCQ (S. C. Lewis)
+const PYTHON_QUESTIONS = [
+  {
+    "id": 1,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 28\nn = 5\nprint(m // n)",
+    "options": {
+      "a": "5.0",
+      "b": "6",
+      "c": "5",
+      "d": "4.0"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 2,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 90\nn = 7\nprint(m % n)",
+    "options": {
+      "a": "6",
+      "b": "4",
+      "c": "6.0",
+      "d": "5.0"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 3,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 79\nn = 64\nprint(m < n)",
+    "options": {
+      "a": "m < n",
+      "b": "False",
+      "c": "True",
+      "d": "No"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 4,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 92\nn = 35\nprint(m > n)",
+    "options": {
+      "a": "True",
+      "b": "False",
+      "c": "Yes",
+      "d": "No"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 5,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = False\nn = True\nprint(m and n)",
+    "options": {
+      "a": "m and n",
+      "b": "False",
+      "c": "True",
+      "d": "mn"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 6,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = True\nn = False\nprint(m or n)",
+    "options": {
+      "a": "m or n",
+      "b": "False",
+      "c": "True",
+      "d": "mn"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 7,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = True\nn = False\nprint(not m)",
+    "options": {
+      "a": "not m",
+      "b": "False",
+      "c": "True",
+      "d": "Not defined"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 8,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = True\nn = False\nprint('not n')",
+    "options": {
+      "a": "not n",
+      "b": "False",
+      "c": "True",
+      "d": "Not defined"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 9,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 7 * 5 + 8\nprint(m)",
+    "options": {
+      "a": "91",
+      "b": "20",
+      "c": "47",
+      "d": "43"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 10,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 9 * (3 + 12)\nprint(m)",
+    "options": {
+      "a": "45",
+      "b": "159",
+      "c": "95",
+      "d": "135"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 11,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = '40' + '01'\nprint(m)",
+    "options": {
+      "a": "4001",
+      "b": "01",
+      "c": "41",
+      "d": "40"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 12,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 81 + 34\nprint(m)",
+    "options": {
+      "a": "8134",
+      "b": "81",
+      "c": "115",
+      "d": "34"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 13,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of n after the following statements if the user entered the number 45?",
+    "code": "m = input('Enter a number: ')\nn = int(m)",
+    "options": {
+      "a": "Float",
+      "b": "String",
+      "c": "List",
+      "d": "Integer"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 14,
+    "category": "Data Types & Variables",
+    "prompt": "What is the data type of m after the following statement?",
+    "code": "m = (41, 54, 23, 68)",
+    "options": {
+      "a": "Dictionary",
+      "b": "Tuple",
+      "c": "String",
+      "d": "List"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 15,
+    "category": "Data Types & Variables",
+    "prompt": "What is the data type of m after the following statement?",
+    "code": "m = ['July', 'September', 'December']",
+    "options": {
+      "a": "Dictionary",
+      "b": "Tuple",
+      "c": "List",
+      "d": "String"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 16,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['July', 'September', 'December']\nn = m[1]\nprint(n)",
+    "options": {
+      "a": "[‘July’, ‘September’, ‘December’]",
+      "b": "July",
+      "c": "September",
+      "d": "December"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 17,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [45, 51, 67]\nn = m[2]\nprint(n)",
+    "options": {
+      "a": "67",
+      "b": "51",
+      "c": "[45, 51, 67]",
+      "d": "45"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 18,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [75, 23, 64]\nn = m[0] + m[1]\nprint(n)",
+    "options": {
+      "a": "75",
+      "b": "23",
+      "c": "64",
+      "d": "98"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 19,
+    "category": "General Python",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['July', 'September', 'December']\nn = m[0] + m[2]\nprint(n)",
+    "options": {
+      "a": "July",
+      "b": "JulyDecember",
+      "c": "JulySeptember",
+      "d": "SeptemberDecember"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 20,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 17\nn = 5\no = m * n\nprint(o)",
+    "options": {
+      "a": "m * n",
+      "b": "17",
+      "c": "85",
+      "d": "5"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 21,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [25, 34, 70, 63]\nn = m[2] - m[0]\nprint(n)",
+    "options": {
+      "a": "25",
+      "b": "45",
+      "c": "70",
+      "d": "34"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 22,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [25, 34, 70, 63]\nn = str(m[1]) +str(m[2])\nprint(n)",
+    "options": {
+      "a": "2534",
+      "b": "95",
+      "c": "104",
+      "d": "3470"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 23,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = [90, 'A', 115, 'B', 250]",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 24,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = 'World Wide Web'",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 25,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}",
+    "options": {
+      "a": "List",
+      "b": "Set",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 26,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = {'A', 'F', 'R', 'Y'}",
+    "options": {
+      "a": "List",
+      "b": "Set",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 27,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = True",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Boolean"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 28,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statements?",
+    "code": "true = \"Honesty is the best policy\"\nm = true",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Boolean"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 29,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nprint(m.keys())",
+    "options": {
+      "a": "dict_keys([‘Listen’, ‘Play’])",
+      "b": "dict_keys([‘Music’, ‘Games’])",
+      "c": "dict_keys({‘Listen’ :‘Music’, ‘Play’ : ‘Games’})",
+      "d": "dict_keys({‘Listen’ : ‘Games’})"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 30,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nprint(m.values())",
+    "options": {
+      "a": "dict_keys([‘Listen’, ‘Play’])",
+      "b": "dict_values([‘Music’, ‘Games’])",
+      "c": "dict_values({‘Listen’ :‘Music’, ‘Play’ : ‘Games’})",
+      "d": "dict_values({‘Listen’ : ‘Games’})"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 31,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = m['Play']\nprint(n)",
+    "options": {
+      "a": "Listen",
+      "b": "Music",
+      "c": "Play",
+      "d": "Games"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 32,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = list(m.values())\nprint(n[0])",
+    "options": {
+      "a": "Listen",
+      "b": "Music",
+      "c": "Play",
+      "d": "Games"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 33,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = list(m.items())\nprint(n)",
+    "options": {
+      "a": "[(‘Play’, ‘Games’), (‘Listen’, ‘Music’)]",
+      "b": "[(‘Listen’, ‘Music’)]",
+      "c": "[(‘Play’, ‘Games’)]",
+      "d": "(‘Play’, ‘Games’), (‘Listen’, ‘Music’)"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 34,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 36\nif m > 19:\n    print(100)",
+    "options": {
+      "a": "36",
+      "b": "19",
+      "c": "100",
+      "d": "m"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 35,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 50\nif m > 50:\n    print(25)\nelse:\n    print(75)",
+    "options": {
+      "a": "50",
+      "b": "m",
+      "c": "75",
+      "d": "25"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 36,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 8\nif m > 7:\n    print(50)\nelif m = = 7:\n    print(60)\nelse:\n    print(70)",
+    "options": {
+      "a": "50",
+      "b": "60",
+      "c": "70",
+      "d": "8"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 37,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 85\nn = 17\nprint(m / n)",
+    "options": {
+      "a": "5",
+      "b": "5.5",
+      "c": "6.0",
+      "d": "5.0"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 38,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 44\nn = 23\nm = m + n\nprint(m)",
+    "options": {
+      "a": "23",
+      "b": "44",
+      "c": "67",
+      "d": "m + n"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 39,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 20\nn = 6\nm = m * n\nprint(m)",
+    "options": {
+      "a": "m * n",
+      "b": "20",
+      "c": "206",
+      "d": "120"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 40,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 99\nn = 11\nm = m - n\nprint(m)",
+    "options": {
+      "a": "88",
+      "b": "11",
+      "c": "99",
+      "d": "9911"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 41,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 70\nn = 10\nm = m % n\nprint(m)",
+    "options": {
+      "a": "7",
+      "b": "70",
+      "c": "10",
+      "d": "0"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 42,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 57\nn = 19\no = m = = n\nprint(o)",
+    "options": {
+      "a": "19",
+      "b": "True",
+      "c": "False",
+      "d": "57"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 43,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 33\nif m > 33:\n    print('A')\nelif m = = 30:\n    print('B')\nelse:\n    print('C')",
+    "options": {
+      "a": "C",
+      "b": "B",
+      "c": "A",
+      "d": "33"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 44,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 99\nif m > 9 and m < 19:\n    print('AA')\nelif m > 19 and m < 39:\n    print('BB')\nelif m > 39 and m < 59:\n    print('CC')\nelse:\n    print('DD')",
+    "options": {
+      "a": "CC",
+      "b": "DD",
+      "c": "BB",
+      "d": "AA"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 45,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 200\nif m <= 25 or m >= 200:\n    print('AA')\nelif m <= 45 or m >= 150:\n    print('BB')\nelif m <= 65 or m >= 100:\n    print('CC')\nelse:\n    print('DD')",
+    "options": {
+      "a": "CC",
+      "b": "DD",
+      "c": "BB",
+      "d": "AA"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 46,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 6\nwhile m < 11:\n    print(m, end= '')\n    m = m + 1",
+    "options": {
+      "a": "6789",
+      "b": "5678910",
+      "c": "678910",
+      "d": "56789"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 47,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 2\nwhile m < 5:\n    print(m, end= '')\n    m += 2",
+    "options": {
+      "a": "24",
+      "b": "246",
+      "c": "2468",
+      "d": "248"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 48,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 1\nn = 5\nwhile n + m < 8:\n    m += 1\n    print(m, end= '')",
+    "options": {
+      "a": "123",
+      "b": "23",
+      "c": "234",
+      "d": "2345"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 49,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m, n = 2, 5\nwhile n < 10:\n    print(n, end= '')\n    m, n = n, m + n",
+    "options": {
+      "a": "25",
+      "b": "58",
+      "c": "579",
+      "d": "57"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 50,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'ABC'\nfor i in m:\n    print(i, end= ' ')",
+    "options": {
+      "a": "A",
+      "b": "ABC",
+      "c": "A B C",
+      "d": "I"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 51,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(7):\n    print(m, end= '')",
+    "options": {
+      "a": "0123456",
+      "b": "01234567",
+      "c": "123456",
+      "d": "1234567"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 52,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(6,9):\n    print(m, end= '')",
+    "options": {
+      "a": "67",
+      "b": "678",
+      "c": "6789",
+      "d": "5678"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 53,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(2,9,3):\n    print(m, end= '')",
+    "options": {
+      "a": "293",
+      "b": "369",
+      "c": "239",
+      "d": "258"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 54,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ('m', 'n', 'o', 'p')\nfor n in m:\n    print(n, end= ' ')",
+    "options": {
+      "a": "n",
+      "b": "mnop",
+      "c": "m n o p",
+      "d": "(‘m’, ‘n’, ‘o’, ‘p’)"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 55,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'m', 'n', 'o', 'p'}\nif 'n' in m:\n    print('n', end= ' ')",
+    "options": {
+      "a": "n",
+      "b": "mnop",
+      "c": "m n o p",
+      "d": "{‘m’, ‘n’, ‘o’, ‘p’}"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 56,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {45: 75, 55: 85}\nfor i in m:\n    print(i, end= ' ')",
+    "options": {
+      "a": "45 : 75",
+      "b": "45 55",
+      "c": "55 : 85",
+      "d": "75 85"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 57,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {45: 75, 55: 85}\nfor n, o in m.items():\n    print(n, o, end= ' ')",
+    "options": {
+      "a": "45 : 75, 55 : 85",
+      "b": "{45 : 75, 55 : 85}",
+      "c": "45 55 75 85",
+      "d": "45 75 55 85"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 58,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(6,9):\n    print(m, end= '')\n    if m = = 8:\n    break",
+    "options": {
+      "a": "67",
+      "b": "679",
+      "c": "678",
+      "d": "6789"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 59,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(6,9):\n    if m = = 8:\n    continue\n    print(m, end= '')",
+    "options": {
+      "a": "67",
+      "b": "679",
+      "c": "678",
+      "d": "6789"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 60,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [15, 65, 105]\nn = 5 in m\nprint(n)",
+    "options": {
+      "a": "15",
+      "b": "[15, 65, 105]",
+      "c": "True",
+      "d": "False"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 61,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 18\ndef nop():\n    print(m)\nnop()",
+    "options": {
+      "a": "m",
+      "b": "nop",
+      "c": "18",
+      "d": "mnop"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 62,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def abc(m, n):\n    print(m - n)\nabc(14, 5)",
+    "options": {
+      "a": "(14, 5)",
+      "b": "145",
+      "c": "m - n",
+      "d": "9"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 63,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def abc(m= 15, n= 10, o= 5):\n    print(m * n + o)\nabc()",
+    "options": {
+      "a": "150",
+      "b": "155",
+      "c": "0",
+      "d": "225"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 64,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def abc(m, n):\n    return m * n\nprint(abc(7, 3))",
+    "options": {
+      "a": "21",
+      "b": "7, 3",
+      "c": "(7, 3)",
+      "d": "m * n"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 65,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def p(m, n):\n    return m / n\no = p(50, 5)\nprint(o)",
+    "options": {
+      "a": "5",
+      "b": "50 / 5",
+      "c": "10.0",
+      "d": "10"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 66,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = m['Music']\nprint(n)",
+    "options": {
+      "a": "Music",
+      "b": "KeyError",
+      "c": "m[‘Music’]",
+      "d": "Listen"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 67,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = lambda n: n**3\nprint(m(6))",
+    "options": {
+      "a": "6",
+      "b": "18",
+      "c": "36",
+      "d": "216"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 68,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "import os",
+    "options": {
+      "a": "Displays the operating system name and version",
+      "b": "Imports the os module",
+      "c": "Imports the os function",
+      "d": "Imports the directory named os"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 69,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play'\nn = 'Games'\nprint(n + m)",
+    "options": {
+      "a": "Play",
+      "b": "Games",
+      "c": "PlayGames",
+      "d": "GamesPlay"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 70,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play'\nn = m * 2\nprint(n)",
+    "options": {
+      "a": "PlayPlay",
+      "b": "Play",
+      "c": "Play2",
+      "d": "Play*2"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 71,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play Games'\nn = m[6]\nprint(n)",
+    "options": {
+      "a": "m[6]",
+      "b": "Play Games",
+      "c": "a",
+      "d": "G"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 72,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play Games'\nn = m[7:9]\nprint(n)",
+    "options": {
+      "a": "ame",
+      "b": "Play Games",
+      "c": "Game",
+      "d": "me"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 73,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play Games'\nn = m[:]\nprint(n)",
+    "options": {
+      "a": "ame",
+      "b": "Play Games",
+      "c": "Play",
+      "d": "Games"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 74,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "m = open('games.txt', 'r')",
+    "options": {
+      "a": "Opens an existing text file named games.txt to read",
+      "b": "Opens an existing text file named games.txt to write",
+      "c": "Opens a new file named games.txt to read",
+      "d": "Opens an existing text file named games.txt to append"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 75,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "m = open('games.txt', 'w')",
+    "options": {
+      "a": "Opens a new file named games.txt to write",
+      "b": "Opens or creates a text file named games.txt to write",
+      "c": "Opens or creates a text file named games.txt to read",
+      "d": "Opens or creates a text file named games.txt to append"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 76,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "x = open('games.txt', 'a')",
+    "options": {
+      "a": "Opens a new file named games.txt to append",
+      "b": "Opens or creates a text file named games.txt to write",
+      "c": "Opens or creates a text file named games.txt to read",
+      "d": "Opens or creates a text file named games.txt to append"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 77,
+    "category": "File I/O & Modules",
+    "prompt": "Who is the creator of Python?",
+    "code": "",
+    "options": {
+      "a": "Albert Einstein",
+      "b": "Monty Python",
+      "c": "Leonardo da Vinci",
+      "d": "Guido Van Rossum"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 78,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = False\nn = True\no = False\nprint(m and n and o)",
+    "options": {
+      "a": "m and n",
+      "b": "True",
+      "c": "False",
+      "d": "Error"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 79,
+    "category": "Arithmetic & Operators",
+    "prompt": "In the order of precedence, which of the operation will be completed first in the following statement?",
+    "code": "7 * 4 + 9 - 2 / 3",
+    "options": {
+      "a": "Addition",
+      "b": "Subtraction",
+      "c": "Multiplication",
+      "d": "Division"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 80,
+    "category": "Arithmetic & Operators",
+    "prompt": "In the order of precedence, which of the operation will be completed last in the following statement?",
+    "code": "7 * 4 + 9 - 2 / 3",
+    "options": {
+      "a": "Addition",
+      "b": "Subtraction",
+      "c": "Multiplication",
+      "d": "Division"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 81,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 36 / 4 % 2 * 5**3\nprint(m)",
+    "options": {
+      "a": "125.0",
+      "b": "0",
+      "c": "36",
+      "d": "14.0"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 82,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 8 / 4 * 10 + 6 **2\nprint(m)",
+    "options": {
+      "a": "32",
+      "b": "45.0",
+      "c": "56.0",
+      "d": "0.0"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 83,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [4, 8]\nprint(m * 3)",
+    "options": {
+      "a": "[4, 8]",
+      "b": "[4, 8, 4, 8]",
+      "c": "[4, 8] * 3",
+      "d": "[4, 8, 4, 8, 4, 8]"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 84,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 67\nn = m\nm = 72\nprint(m, n)",
+    "options": {
+      "a": "67 72",
+      "b": "72 67",
+      "c": "7267",
+      "d": "72 72"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 85,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 20 * 10 // 30\nn = 20 * 10.0 // 40\no = 20.0 * 10 / 50\nprint(m, n, o)",
+    "options": {
+      "a": "6.5 5.0 4.5",
+      "b": "6.0 5.0 4",
+      "c": "5 6.0 4.0",
+      "d": "6 5.0 4.0"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 86,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 2\nfor n in range(3, 15, 5):\n    n += m + 2\nprint(n)",
+    "options": {
+      "a": "14",
+      "b": "16",
+      "c": "17",
+      "d": "19"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 87,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = False\nprint(m or not m)",
+    "options": {
+      "a": "a",
+      "b": "False",
+      "c": "not a",
+      "d": "True"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 88,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = min(50, 25, 65, 0, 99)\nprint(m)",
+    "options": {
+      "a": "0",
+      "b": "99",
+      "c": "25",
+      "d": "(50, 25, 65, 0, 99)"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 89,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [50, 25, 65, 0, 99]\nn = max(m)\nprint(n)",
+    "options": {
+      "a": "0",
+      "b": "99",
+      "c": "25",
+      "d": "(50, 25, 65, 0, 99)"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 90,
+    "category": "Loops & Iterations",
+    "prompt": "How many times will “Music” be printed after the following statements?",
+    "code": "for i in range(3, 7):\n    print('Music')",
+    "options": {
+      "a": "3",
+      "b": "4",
+      "c": "5",
+      "d": "6"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 91,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 39\nn = 61\no = (m + n) // 2\nprint(o)",
+    "options": {
+      "a": "40.0",
+      "b": "50.0",
+      "c": "50",
+      "d": "55"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 92,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 10*10**1\nprint(m)",
+    "options": {
+      "a": "10",
+      "b": "1",
+      "c": "1000",
+      "d": "100"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 93,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = []\nfor n in range(6):\n    m.append(n*3)\nprint(m)",
+    "options": {
+      "a": "[3, 6, 9, 12, 15]",
+      "b": "[0, 3, 6, 9, 12]",
+      "c": "[0, 3, 6, 9, 12, 15]",
+      "d": "[]"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 94,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [n*4 for n in range(3)]\nprint(m)",
+    "options": {
+      "a": "[0, 0, 0]",
+      "b": "[0, 4, 8]",
+      "c": "[0, 4, 8, 12]",
+      "d": "[0, 4, 8, 12, 16]"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 95,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [-5, -2, 0, 3, 4]\nprint([n*2 for n in m])",
+    "options": {
+      "a": "[-10, -4, 0, 6, 8]",
+      "b": "[10, 4, 0, 6, 8]",
+      "c": "[-10, -4, 0, 6]",
+      "d": "[-10, -4, 0]"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 96,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [5, 10, 35]\ndel m[:]\nprint(m)",
+    "options": {
+      "a": "[5, 10, 35]",
+      "b": "[]",
+      "c": "[5, 35]",
+      "d": "5, 10, 35"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 97,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'A'\nn = 'B'\no = 'C'\np = [m, n, o]\nprint(p)",
+    "options": {
+      "a": "[‘C’, ‘B’, ‘A’]",
+      "b": "‘C’, ‘A’, ‘B’",
+      "c": "[‘C’, ‘A’, ‘B’]",
+      "d": "[‘A’, ‘B’, ‘C’]"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 98,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = list(range(7,10))\nprint(m)",
+    "options": {
+      "a": "[7, 8, 9, 10]",
+      "b": "list([7, 8, 9])",
+      "c": "[7, 8, 9]",
+      "d": "789"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 99,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [10, 25, 35]\nn = sum(m)\nprint(n)",
+    "options": {
+      "a": "35",
+      "b": "25",
+      "c": "10",
+      "d": "70"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 100,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['Games', 'in', 'Python']\nn = 'Play' + m[0] + m[1] + m[2]\nprint(n)",
+    "options": {
+      "a": "PlayGamesinPython",
+      "b": "Play Games in Python",
+      "c": "Games in Python",
+      "d": "GamesinPython"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 101,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['Play']\nn = ['Games', 'in', 'Python']\no = m + n\nprint(o)",
+    "options": {
+      "a": "[‘Games’, ‘in’, ‘Python’, ‘Play’]",
+      "b": "[‘Play Games’, ‘in’, ‘Python’]",
+      "c": "[‘Play’, ‘Games’, ‘in’, ‘Python’]",
+      "d": "[‘PlayGames’, ‘in’, ‘Python’]"
+    },
+    "answer": "c"
+  }
+];
+
+</script>
+<script>
+/**
+ * Quantum AI Python 3 Assessment & CRM Engine
+ * Built for Mohit Sir (Technical Faculty)
+ */
+
+// Application State
+const state = {
+  currentStudent: null,
+  currentQuestionIndex: 0,
+  answers: {}, // { [questionId]: 'a' | 'b' | 'c' | 'd' }
+  markedForReview: new Set(),
+  timeRemaining: 90 * 60, // in seconds
+  timerInterval: null,
+  currentRecord: null,
+  paletteFilter: 'all',
+  reviewFilter: 'all',
+  crmRecords: []
+};
+
+// Initialize App on DOM Load
+document.addEventListener('DOMContentLoaded', () => {
+  loadCRMRecords();
+  setupEventListeners();
+  setupKeyboardShortcuts();
+});
+
+// Load records from LocalStorage
+function loadCRMRecords() {
+  try {
+    const data = localStorage.getItem('quantum_ai_python_crm');
+    if (data) {
+      state.crmRecords = JSON.parse(data);
+    } else {
+      state.crmRecords = [];
+    }
+  } catch (e) {
+    console.error('Failed to load CRM data:', e);
+    state.crmRecords = [];
+  }
+}
+
+// Save records to LocalStorage
+function saveCRMRecords() {
+  try {
+    localStorage.setItem('quantum_ai_python_crm', JSON.stringify(state.crmRecords));
+  } catch (e) {
+    console.error('Failed to save CRM data:', e);
+  }
+}
+
+// Setup Event Listeners
+function setupEventListeners() {
+  // Navigation Tabs
+  document.getElementById('tab-test').addEventListener('click', () => {
+    switchTab('test');
+    if (!state.currentStudent) {
+      showView('view-welcome');
+    } else if (state.currentRecord) {
+      showView('view-scorecard');
+    } else {
+      showView('view-exam');
+    }
+  });
+
+  document.getElementById('tab-crm').addEventListener('click', () => {
+    switchTab('crm');
+    renderCRM();
+    showView('view-crm');
+  });
+
+  // Start Form Submission
+  const startForm = document.getElementById('student-reg-form');
+  if (startForm) {
+    startForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      startTest();
+    });
+  }
+
+  // Exam Controls
+  document.getElementById('btn-prev').addEventListener('click', () => navigateQuestion(-1));
+  document.getElementById('btn-next').addEventListener('click', () => navigateQuestion(1));
+  document.getElementById('btn-clear').addEventListener('click', clearChoice);
+  document.getElementById('btn-mark').addEventListener('click', toggleMark);
+  document.getElementById('btn-submit-exam').addEventListener('click', () => confirmSubmit());
+
+  // Palette Filters
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      state.paletteFilter = e.target.dataset.filter;
+      renderPalette();
+    });
+  });
+
+  // Review Filters
+  document.querySelectorAll('.review-filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.review-filter-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      state.reviewFilter = e.target.dataset.filter;
+      renderReviewList();
+    });
+  });
+
+  // CRM Search Input
+  const crmSearch = document.getElementById('crm-search');
+  if (crmSearch) {
+    crmSearch.addEventListener('input', () => renderCRMTable());
+  }
+}
+
+// Keyboard shortcuts for rapid testing
+function setupKeyboardShortcuts() {
+  document.addEventListener('keydown', (e) => {
+    // Only active during exam view and when not typing in an input
+    const examView = document.getElementById('view-exam');
+    if (!examView.classList.contains('active') || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+      return;
+    }
+
+    const key = e.key.toLowerCase();
+    if (['a', 'b', 'c', 'd'].includes(key)) {
+      selectOption(key);
+    } else if (key === '1') selectOption('a');
+    else if (key === '2') selectOption('b');
+    else if (key === '3') selectOption('c');
+    else if (key === '4') selectOption('d');
+    else if (key === 'arrowright' || key === 'n') {
+      navigateQuestion(1);
+    } else if (key === 'arrowleft' || key === 'p') {
+      navigateQuestion(-1);
+    } else if (key === 'm') {
+      toggleMark();
+    }
+  });
+}
+
+// Switch UI Tabs
+function switchTab(tab) {
+  document.getElementById('tab-test').classList.toggle('active', tab === 'test');
+  document.getElementById('tab-crm').classList.toggle('active', tab === 'crm');
+}
+
+// View switcher
+function showView(viewId) {
+  document.querySelectorAll('.view-section').forEach(view => {
+    view.classList.remove('active');
+  });
+  const target = document.getElementById(viewId);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// ==========================================================
+// TEST EXECUTION LOGIC
+// ==========================================================
+function startTest() {
+  const name = document.getElementById('input-name').value.trim();
+  const roll = document.getElementById('input-roll').value.trim() || 'QA-' + Math.floor(1000 + Math.random() * 9000);
+  const batch = document.getElementById('input-batch').value;
+  const durationMinutes = parseInt(document.getElementById('input-duration').value, 10) || 90;
+
+  if (!name) {
+    alert('Kripya bache ka naam darj karein!');
+    return;
+  }
+
+  state.currentStudent = {
+    name,
+    roll,
+    batch,
+    durationMinutes,
+    startTime: new Date().toISOString()
+  };
+
+  state.answers = {};
+  state.markedForReview.clear();
+  state.currentQuestionIndex = 0;
+  state.timeRemaining = durationMinutes * 60;
+  state.currentRecord = null;
+
+  // Update Exam Meta
+  document.getElementById('exam-student-name').textContent = name;
+  document.getElementById('exam-student-roll').textContent = `Roll: ${roll} • ${batch}`;
+  document.getElementById('exam-student-avatar').textContent = name.charAt(0).toUpperCase();
+
+  // Start Timer
+  startTimer();
+
+  // Render first question & palette
+  renderQuestion(0);
+  renderPalette();
+
+  // Show exam view
+  showView('view-exam');
+}
+
+function startTimer() {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  updateTimerDisplay();
+
+  state.timerInterval = setInterval(() => {
+    state.timeRemaining--;
+    updateTimerDisplay();
+
+    if (state.timeRemaining <= 0) {
+      clearInterval(state.timerInterval);
+      alert('Samay samaapt ho gaya! Test automatically submit kiya ja raha hai.');
+      submitExam(true);
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const timerEl = document.getElementById('exam-timer');
+  const mins = Math.floor(state.timeRemaining / 60);
+  const secs = state.timeRemaining % 60;
+  timerEl.textContent = `⏱️ ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+  timerEl.className = 'timer-box';
+  if (state.timeRemaining < 300) {
+    timerEl.classList.add('timer-danger');
+  } else if (state.timeRemaining < 600) {
+    timerEl.classList.add('timer-warning');
+  }
+}
+
+function renderQuestion(index) {
+  if (index < 0 || index >= PYTHON_QUESTIONS.length) return;
+  state.currentQuestionIndex = index;
+
+  const q = PYTHON_QUESTIONS[index];
+
+  // Number & Category
+  document.getElementById('q-number').textContent = `Question ${q.id} of ${PYTHON_QUESTIONS.length}`;
+  document.getElementById('q-category').textContent = q.category;
+
+  // Prompt
+  document.getElementById('q-prompt').textContent = q.prompt;
+
+  // Code Block
+  const codeWrapper = document.getElementById('q-code-wrapper');
+  const codeContent = document.getElementById('q-code');
+  if (q.code && q.code.trim().length > 0) {
+    codeWrapper.style.display = 'block';
+    codeContent.textContent = q.code;
+  } else {
+    codeWrapper.style.display = 'none';
+  }
+
+  // Options
+  const optionsGrid = document.getElementById('q-options-grid');
+  optionsGrid.innerHTML = '';
+
+  const selectedAnswer = state.answers[q.id];
+
+  ['a', 'b', 'c', 'd'].forEach(letter => {
+    const optText = q.options[letter];
+    if (optText !== undefined) {
+      const card = document.createElement('div');
+      card.className = `option-card ${selectedAnswer === letter ? 'selected' : ''}`;
+      card.dataset.option = letter;
+      card.innerHTML = `
+        <div class="option-letter">${letter}</div>
+        <div class="option-text">${escapeHtml(optText)}</div>
+      `;
+      card.addEventListener('click', () => selectOption(letter));
+      optionsGrid.appendChild(card);
+    }
+  });
+
+  // Buttons state
+  document.getElementById('btn-prev').disabled = (index === 0);
+  document.getElementById('btn-next').disabled = (index === PYTHON_QUESTIONS.length - 1);
+
+  // Mark for review button state
+  const btnMark = document.getElementById('btn-mark');
+  if (state.markedForReview.has(q.id)) {
+    btnMark.classList.add('marked');
+    btnMark.innerHTML = `⭐ Marked`;
+  } else {
+    btnMark.classList.remove('marked');
+    btnMark.innerHTML = `☆ Mark Review`;
+  }
+
+  // Update Palette active state
+  renderPalette();
+}
+
+function selectOption(letter) {
+  const q = PYTHON_QUESTIONS[state.currentQuestionIndex];
+  state.answers[q.id] = letter;
+
+  // Update UI cards
+  document.querySelectorAll('.option-card').forEach(card => {
+    card.classList.toggle('selected', card.dataset.option === letter);
+  });
+
+  renderPalette();
+}
+
+function clearChoice() {
+  const q = PYTHON_QUESTIONS[state.currentQuestionIndex];
+  delete state.answers[q.id];
+  document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+  renderPalette();
+}
+
+function toggleMark() {
+  const q = PYTHON_QUESTIONS[state.currentQuestionIndex];
+  const btnMark = document.getElementById('btn-mark');
+
+  if (state.markedForReview.has(q.id)) {
+    state.markedForReview.delete(q.id);
+    btnMark.classList.remove('marked');
+    btnMark.innerHTML = `☆ Mark Review`;
+  } else {
+    state.markedForReview.add(q.id);
+    btnMark.classList.add('marked');
+    btnMark.innerHTML = `⭐ Marked`;
+  }
+  renderPalette();
+}
+
+function navigateQuestion(offset) {
+  const nextIdx = state.currentQuestionIndex + offset;
+  if (nextIdx >= 0 && nextIdx < PYTHON_QUESTIONS.length) {
+    renderQuestion(nextIdx);
+  }
+}
+
+function renderPalette() {
+  const palette = document.getElementById('exam-palette');
+  palette.innerHTML = '';
+
+  let answeredCount = 0;
+  let markedCount = 0;
+
+  PYTHON_QUESTIONS.forEach((q, idx) => {
+    const isAnswered = Boolean(state.answers[q.id]);
+    const isMarked = state.markedForReview.has(q.id);
+    const isCurrent = (idx === state.currentQuestionIndex);
+
+    if (isAnswered) answeredCount++;
+    if (isMarked) markedCount++;
+
+    // Apply Filter
+    if (state.paletteFilter === 'answered' && !isAnswered) return;
+    if (state.paletteFilter === 'unanswered' && isAnswered) return;
+    if (state.paletteFilter === 'marked' && !isMarked) return;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'palette-btn';
+    btn.textContent = q.id;
+
+    if (isCurrent) btn.classList.add('current');
+    if (isMarked) btn.classList.add('marked');
+    else if (isAnswered) btn.classList.add('answered');
+
+    btn.addEventListener('click', () => renderQuestion(idx));
+    palette.appendChild(btn);
+  });
+
+  // Update stats counters
+  document.getElementById('stat-answered-count').textContent = answeredCount;
+  document.getElementById('stat-unanswered-count').textContent = (PYTHON_QUESTIONS.length - answeredCount);
+  document.getElementById('stat-marked-count').textContent = markedCount;
+}
+
+// ==========================================================
+// TEST SUBMISSION & INSTANT AUTO-SCORING
+// ==========================================================
+function confirmSubmit() {
+  const answeredCount = Object.keys(state.answers).length;
+  const unansweredCount = PYTHON_QUESTIONS.length - answeredCount;
+  const markedCount = state.markedForReview.size;
+
+  let msg = `Aapne 101 me se ${answeredCount} prashno ke uttar diye hain.\n${unansweredCount} prashn bina uttar ke hain.`;
+  if (markedCount > 0) {
+    msg += `\n${markedCount} prashn review ke liye marked hain.`;
+  }
+  msg += `\n\nKya aap sach me test submit karna chahte hain?`;
+
+  if (confirm(msg)) {
+    submitExam(false);
+  }
+}
+
+function submitExam(isAuto = false) {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+
+  const endTime = new Date();
+  const startTime = new Date(state.currentStudent.startTime);
+  const timeTakenSeconds = Math.round((endTime - startTime) / 1000);
+  const timeSpentMins = Math.floor(timeTakenSeconds / 60);
+  const timeSpentSecs = timeTakenSeconds % 60;
+  const formattedTimeTaken = `${timeSpentMins}m ${timeSpentSecs}s`;
+
+  // Calculate Score against PDF Answer Key
+  let correctCount = 0;
+  let incorrectCount = 0;
+  let skippedCount = 0;
+
+  const categoryPerformance = {};
+
+  PYTHON_QUESTIONS.forEach(q => {
+    const studentAns = state.answers[q.id];
+    const correctAns = q.answer;
+
+    if (!categoryPerformance[q.category]) {
+      categoryPerformance[q.category] = { total: 0, correct: 0 };
+    }
+    categoryPerformance[q.category].total++;
+
+    if (!studentAns) {
+      skippedCount++;
+    } else if (studentAns === correctAns) {
+      correctCount++;
+      categoryPerformance[q.category].correct++;
+    } else {
+      incorrectCount++;
+    }
+  });
+
+  const percentage = ((correctCount / PYTHON_QUESTIONS.length) * 100).toFixed(1);
+
+  // Status & Grade
+  let status = 'Fail';
+  let badgeClass = 'badge-fail';
+  if (percentage >= 80) {
+    status = 'Distinction';
+    badgeClass = 'badge-distinction';
+  } else if (percentage >= 50) {
+    status = 'Pass';
+    badgeClass = 'badge-pass';
+  }
+
+  // Record Object for CRM
+  const record = {
+    id: 'TR-' + Date.now(),
+    date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+    studentName: state.currentStudent.name,
+    roll: state.currentStudent.roll,
+    batch: state.currentStudent.batch,
+    score: correctCount,
+    total: PYTHON_QUESTIONS.length,
+    percentage: parseFloat(percentage),
+    correct: correctCount,
+    incorrect: incorrectCount,
+    skipped: skippedCount,
+    timeTaken: formattedTimeTaken,
+    status: status,
+    badgeClass: badgeClass,
+    answers: { ...state.answers },
+    categories: categoryPerformance
+  };
+
+  // Save to CRM State & LocalStorage
+  state.crmRecords.unshift(record);
+  saveCRMRecords();
+  state.currentRecord = record;
+
+  // Render Scorecard
+  renderScorecard(record);
+  showView('view-scorecard');
+}
+
+// ==========================================================
+// SCORECARD RENDERING
+// ==========================================================
+function renderScorecard(record) {
+  document.getElementById('res-badge').className = `result-badge ${record.badgeClass}`;
+  document.getElementById('res-badge').textContent = (record.status === 'Distinction') ? '🌟 Distinction' : (record.status === 'Pass') ? '✅ Qualified / Passed' : '⚠️ Needs Revision';
+
+  document.getElementById('res-student-title').textContent = `${record.studentName} ka Assessment Scorecard`;
+  document.getElementById('res-tagline').textContent = `Roll No: ${record.roll} • Batch: ${record.batch} • Exam Date: ${record.date}`;
+
+  document.getElementById('res-score').textContent = record.score;
+  document.getElementById('res-percentage').textContent = `Percentage: ${record.percentage}% (${record.status})`;
+
+  document.getElementById('res-correct').textContent = record.correct;
+  document.getElementById('res-incorrect').textContent = record.incorrect;
+  document.getElementById('res-skipped').textContent = record.skipped;
+  document.getElementById('res-time').textContent = record.timeTaken;
+
+  // Render Topic Mastery
+  const barsContainer = document.getElementById('category-breakdown-bars');
+  barsContainer.innerHTML = '';
+
+  Object.entries(record.categories).forEach(([category, data]) => {
+    const catPercent = ((data.correct / data.total) * 100).toFixed(0);
+    const item = document.createElement('div');
+    item.className = 'cat-bar-item';
+    item.innerHTML = `
+      <div class="cat-bar-header">
+        <span>${category}</span>
+        <span>${data.correct} / ${data.total} (${catPercent}%)</span>
+      </div>
+      <div class="cat-bar-bg">
+        <div class="cat-bar-fill" style="width: ${catPercent}%"></div>
+      </div>
+    `;
+    barsContainer.appendChild(item);
+  });
+
+  // Action listeners
+  document.getElementById('btn-print-scorecard').onclick = () => window.print();
+  document.getElementById('btn-review-answers').onclick = () => {
+    renderReviewList();
+    showView('view-review');
+  };
+  document.getElementById('btn-retake-test').onclick = () => {
+    if (confirm('Naye sire se test shuru karna chahte hain?')) {
+      showView('view-welcome');
+    }
+  };
+}
+
+// ==========================================================
+// DETAILED QUESTION REVIEW
+// ==========================================================
+function renderReviewList() {
+  const container = document.getElementById('review-items-container');
+  container.innerHTML = '';
+
+  const record = state.currentRecord || state.crmRecords[0];
+  if (!record) {
+    container.innerHTML = '<p>Koi submission record uplabdh nahi hai.</p>';
+    return;
+  }
+
+  PYTHON_QUESTIONS.forEach(q => {
+    const studentChoice = record.answers[q.id];
+    const isCorrect = (studentChoice === q.answer);
+    const isSkipped = !studentChoice;
+
+    // Filter logic
+    if (state.reviewFilter === 'correct' && !isCorrect) return;
+    if (state.reviewFilter === 'incorrect' && (isCorrect || isSkipped)) return;
+    if (state.reviewFilter === 'skipped' && !isSkipped) return;
+
+    let cardClass = isCorrect ? 'is-correct' : (isSkipped ? 'is-skipped' : 'is-incorrect');
+    let badgeText = isCorrect ? '✅ Correct' : (isSkipped ? '⚪ Skipped' : '❌ Incorrect');
+    let badgeStyle = isCorrect ? 'correct' : (isSkipped ? 'skipped' : 'incorrect');
+
+    const card = document.createElement('div');
+    card.className = `review-item-card ${cardClass}`;
+
+    let codeHtml = '';
+    if (q.code && q.code.trim()) {
+      codeHtml = `
+        <div class="code-wrapper">
+          <div class="code-header"><span>Python Code</span></div>
+          <div class="code-content">${escapeHtml(q.code)}</div>
+        </div>
+      `;
+    }
+
+    let optionsHtml = '';
+    ['a', 'b', 'c', 'd'].forEach(letter => {
+      const optVal = q.options[letter];
+      if (optVal !== undefined) {
+        let optClass = 'review-option';
+        let note = '';
+
+        if (letter === q.answer) {
+          optClass += ' correct-answer';
+          note = ' ✓ (Sahi Uttar)';
+        }
+        if (studentChoice === letter && !isCorrect) {
+          optClass += ' wrong-selection';
+          note = ' ✗ (Bache Ka Choice)';
+        } else if (studentChoice === letter && isCorrect) {
+          note = ' ✓ (Bache Ka Choice)';
+        }
+
+        optionsHtml += `
+          <div class="${optClass}">
+            <strong>${letter.toUpperCase()}.</strong> ${escapeHtml(optVal)} ${note}
+          </div>
+        `;
+      }
+    });
+
+    card.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-weight: 700; color: var(--accent);">Question #${q.id} • ${q.category}</span>
+        <span class="review-badge ${badgeStyle}">${badgeText}</span>
+      </div>
+      <div style="font-size: 1.05rem; font-weight: 600;">${q.prompt}</div>
+      ${codeHtml}
+      <div class="review-options">${optionsHtml}</div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// ==========================================================
+// TEACHER CRM DASHBOARD
+// ==========================================================
+function renderCRM() {
+  loadCRMRecords();
+
+  const totalTests = state.crmRecords.length;
+  document.getElementById('crm-total-count').textContent = totalTests;
+
+  if (totalTests === 0) {
+    document.getElementById('crm-avg-score').textContent = '0%';
+    document.getElementById('crm-high-score').textContent = '0 / 101';
+    document.getElementById('crm-pass-rate').textContent = '0%';
+  } else {
+    const totalPercentage = state.crmRecords.reduce((acc, r) => acc + r.percentage, 0);
+    const avgPercentage = (totalPercentage / totalTests).toFixed(1);
+    const highestScore = Math.max(...state.crmRecords.map(r => r.score));
+    const passCount = state.crmRecords.filter(r => r.percentage >= 50).length;
+    const passRate = ((passCount / totalTests) * 100).toFixed(0);
+
+    document.getElementById('crm-avg-score').textContent = `${avgPercentage}%`;
+    document.getElementById('crm-high-score').textContent = `${highestScore} / 101`;
+    document.getElementById('crm-pass-rate').textContent = `${passRate}%`;
+  }
+
+  renderCRMTable();
+
+  // Export CSV Listener
+  document.getElementById('btn-export-csv').onclick = exportCRMToCSV;
+  document.getElementById('btn-clear-crm').onclick = clearCRMData;
+}
+
+function renderCRMTable() {
+  const tbody = document.getElementById('crm-table-body');
+  tbody.innerHTML = '';
+
+  const search = (document.getElementById('crm-search').value || '').toLowerCase();
+  const filtered = state.crmRecords.filter(r => 
+    r.studentName.toLowerCase().includes(search) || 
+    r.roll.toLowerCase().includes(search) ||
+    r.batch.toLowerCase().includes(search)
+  );
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">Koi record nahi mila.</td></tr>`;
+    return;
+  }
+
+  filtered.forEach(record => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><strong>${record.studentName}</strong></td>
+      <td>${record.roll}</td>
+      <td><span style="font-size: 0.8rem; color: var(--text-muted);">${record.batch}</span></td>
+      <td><strong>${record.score}</strong> / 101 (${record.percentage}%)</td>
+      <td>${record.timeTaken}</td>
+      <td><span class="status-pill ${record.status.toLowerCase()}">${record.status}</span></td>
+      <td>
+        <div class="table-actions">
+          <button class="btn-icon" title="View Scorecard" onclick="viewStudentScorecard('${record.id}')">👁️ View</button>
+          <button class="btn-icon" title="Delete Entry" onclick="deleteCRMRecord('${record.id}')">🗑️</button>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+window.viewStudentScorecard = function(recordId) {
+  const found = state.crmRecords.find(r => r.id === recordId);
+  if (found) {
+    state.currentRecord = found;
+    renderScorecard(found);
+    switchTab('test');
+    showView('view-scorecard');
+  }
+};
+
+window.deleteCRMRecord = function(recordId) {
+  if (confirm('Kya aap is student ka record delete karna chahte hain?')) {
+    state.crmRecords = state.crmRecords.filter(r => r.id !== recordId);
+    saveCRMRecords();
+    renderCRM();
+  }
+};
+
+function clearCRMData() {
+  if (confirm('Savdhaani: Kya aap CRM ka poora data delete karna chahte hain?')) {
+    state.crmRecords = [];
+    saveCRMRecords();
+    renderCRM();
+  }
+}
+
+function exportCRMToCSV() {
+  if (state.crmRecords.length === 0) {
+    alert('Export karne ke liye koi record nahi hai!');
+    return;
+  }
+
+  let csv = 'ID,Date,Student Name,Roll No,Batch,Score,Total,Percentage,Status,Time Taken\n';
+  state.crmRecords.forEach(r => {
+    csv += `"${r.id}","${r.date}","${r.studentName}","${r.roll}","${r.batch}",${r.score},${r.total},${r.percentage}%,"${r.status}","${r.timeTaken}"\n`;
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `QuantumAI_Python_Test_Records_${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// Utility: HTML escape
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+}
+
+</script>
+</body>
+</html>
