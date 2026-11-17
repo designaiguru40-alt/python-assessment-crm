@@ -1,0 +1,1315 @@
+[
+  {
+    "id": 1,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 28\nn = 5\nprint(m // n)",
+    "options": {
+      "a": "5.0",
+      "b": "6",
+      "c": "5",
+      "d": "4.0"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 2,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 90\nn = 7\nprint(m % n)",
+    "options": {
+      "a": "6",
+      "b": "4",
+      "c": "6.0",
+      "d": "5.0"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 3,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 79\nn = 64\nprint(m < n)",
+    "options": {
+      "a": "m < n",
+      "b": "False",
+      "c": "True",
+      "d": "No"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 4,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 92\nn = 35\nprint(m > n)",
+    "options": {
+      "a": "True",
+      "b": "False",
+      "c": "Yes",
+      "d": "No"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 5,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = False\nn = True\nprint(m and n)",
+    "options": {
+      "a": "m and n",
+      "b": "False",
+      "c": "True",
+      "d": "mn"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 6,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = True\nn = False\nprint(m or n)",
+    "options": {
+      "a": "m or n",
+      "b": "False",
+      "c": "True",
+      "d": "mn"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 7,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = True\nn = False\nprint(not m)",
+    "options": {
+      "a": "not m",
+      "b": "False",
+      "c": "True",
+      "d": "Not defined"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 8,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = True\nn = False\nprint('not n')",
+    "options": {
+      "a": "not n",
+      "b": "False",
+      "c": "True",
+      "d": "Not defined"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 9,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 7 * 5 + 8\nprint(m)",
+    "options": {
+      "a": "91",
+      "b": "20",
+      "c": "47",
+      "d": "43"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 10,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 9 * (3 + 12)\nprint(m)",
+    "options": {
+      "a": "45",
+      "b": "159",
+      "c": "95",
+      "d": "135"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 11,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = '40' + '01'\nprint(m)",
+    "options": {
+      "a": "4001",
+      "b": "01",
+      "c": "41",
+      "d": "40"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 12,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 81 + 34\nprint(m)",
+    "options": {
+      "a": "8134",
+      "b": "81",
+      "c": "115",
+      "d": "34"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 13,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of n after the following statements if the user entered the number 45?",
+    "code": "m = input('Enter a number: ')\nn = int(m)",
+    "options": {
+      "a": "Float",
+      "b": "String",
+      "c": "List",
+      "d": "Integer"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 14,
+    "category": "Data Types & Variables",
+    "prompt": "What is the data type of m after the following statement?",
+    "code": "m = (41, 54, 23, 68)",
+    "options": {
+      "a": "Dictionary",
+      "b": "Tuple",
+      "c": "String",
+      "d": "List"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 15,
+    "category": "Data Types & Variables",
+    "prompt": "What is the data type of m after the following statement?",
+    "code": "m = ['July', 'September', 'December']",
+    "options": {
+      "a": "Dictionary",
+      "b": "Tuple",
+      "c": "List",
+      "d": "String"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 16,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['July', 'September', 'December']\nn = m[1]\nprint(n)",
+    "options": {
+      "a": "[‘July’, ‘September’, ‘December’]",
+      "b": "July",
+      "c": "September",
+      "d": "December"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 17,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [45, 51, 67]\nn = m[2]\nprint(n)",
+    "options": {
+      "a": "67",
+      "b": "51",
+      "c": "[45, 51, 67]",
+      "d": "45"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 18,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [75, 23, 64]\nn = m[0] + m[1]\nprint(n)",
+    "options": {
+      "a": "75",
+      "b": "23",
+      "c": "64",
+      "d": "98"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 19,
+    "category": "General Python",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['July', 'September', 'December']\nn = m[0] + m[2]\nprint(n)",
+    "options": {
+      "a": "July",
+      "b": "JulyDecember",
+      "c": "JulySeptember",
+      "d": "SeptemberDecember"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 20,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 17\nn = 5\no = m * n\nprint(o)",
+    "options": {
+      "a": "m * n",
+      "b": "17",
+      "c": "85",
+      "d": "5"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 21,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [25, 34, 70, 63]\nn = m[2] - m[0]\nprint(n)",
+    "options": {
+      "a": "25",
+      "b": "45",
+      "c": "70",
+      "d": "34"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 22,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [25, 34, 70, 63]\nn = str(m[1]) +str(m[2])\nprint(n)",
+    "options": {
+      "a": "2534",
+      "b": "95",
+      "c": "104",
+      "d": "3470"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 23,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = [90, 'A', 115, 'B', 250]",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 24,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = 'World Wide Web'",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 25,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}",
+    "options": {
+      "a": "List",
+      "b": "Set",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 26,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = {'A', 'F', 'R', 'Y'}",
+    "options": {
+      "a": "List",
+      "b": "Set",
+      "c": "Dictionary",
+      "d": "Tuple"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 27,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statement?",
+    "code": "m = True",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Boolean"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 28,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the data type of m after the following statements?",
+    "code": "true = \"Honesty is the best policy\"\nm = true",
+    "options": {
+      "a": "List",
+      "b": "String",
+      "c": "Dictionary",
+      "d": "Boolean"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 29,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nprint(m.keys())",
+    "options": {
+      "a": "dict_keys([‘Listen’, ‘Play’])",
+      "b": "dict_keys([‘Music’, ‘Games’])",
+      "c": "dict_keys({‘Listen’ :‘Music’, ‘Play’ : ‘Games’})",
+      "d": "dict_keys({‘Listen’ : ‘Games’})"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 30,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nprint(m.values())",
+    "options": {
+      "a": "dict_keys([‘Listen’, ‘Play’])",
+      "b": "dict_values([‘Music’, ‘Games’])",
+      "c": "dict_values({‘Listen’ :‘Music’, ‘Play’ : ‘Games’})",
+      "d": "dict_values({‘Listen’ : ‘Games’})"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 31,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = m['Play']\nprint(n)",
+    "options": {
+      "a": "Listen",
+      "b": "Music",
+      "c": "Play",
+      "d": "Games"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 32,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = list(m.values())\nprint(n[0])",
+    "options": {
+      "a": "Listen",
+      "b": "Music",
+      "c": "Play",
+      "d": "Games"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 33,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = list(m.items())\nprint(n)",
+    "options": {
+      "a": "[(‘Play’, ‘Games’), (‘Listen’, ‘Music’)]",
+      "b": "[(‘Listen’, ‘Music’)]",
+      "c": "[(‘Play’, ‘Games’)]",
+      "d": "(‘Play’, ‘Games’), (‘Listen’, ‘Music’)"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 34,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 36\nif m > 19:\n    print(100)",
+    "options": {
+      "a": "36",
+      "b": "19",
+      "c": "100",
+      "d": "m"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 35,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 50\nif m > 50:\n    print(25)\nelse:\n    print(75)",
+    "options": {
+      "a": "50",
+      "b": "m",
+      "c": "75",
+      "d": "25"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 36,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 8\nif m > 7:\n    print(50)\nelif m = = 7:\n    print(60)\nelse:\n    print(70)",
+    "options": {
+      "a": "50",
+      "b": "60",
+      "c": "70",
+      "d": "8"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 37,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 85\nn = 17\nprint(m / n)",
+    "options": {
+      "a": "5",
+      "b": "5.5",
+      "c": "6.0",
+      "d": "5.0"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 38,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 44\nn = 23\nm = m + n\nprint(m)",
+    "options": {
+      "a": "23",
+      "b": "44",
+      "c": "67",
+      "d": "m + n"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 39,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 20\nn = 6\nm = m * n\nprint(m)",
+    "options": {
+      "a": "m * n",
+      "b": "20",
+      "c": "206",
+      "d": "120"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 40,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 99\nn = 11\nm = m - n\nprint(m)",
+    "options": {
+      "a": "88",
+      "b": "11",
+      "c": "99",
+      "d": "9911"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 41,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 70\nn = 10\nm = m % n\nprint(m)",
+    "options": {
+      "a": "7",
+      "b": "70",
+      "c": "10",
+      "d": "0"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 42,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 57\nn = 19\no = m = = n\nprint(o)",
+    "options": {
+      "a": "19",
+      "b": "True",
+      "c": "False",
+      "d": "57"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 43,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 33\nif m > 33:\n    print('A')\nelif m = = 30:\n    print('B')\nelse:\n    print('C')",
+    "options": {
+      "a": "C",
+      "b": "B",
+      "c": "A",
+      "d": "33"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 44,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 99\nif m > 9 and m < 19:\n    print('AA')\nelif m > 19 and m < 39:\n    print('BB')\nelif m > 39 and m < 59:\n    print('CC')\nelse:\n    print('DD')",
+    "options": {
+      "a": "CC",
+      "b": "DD",
+      "c": "BB",
+      "d": "AA"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 45,
+    "category": "Conditionals (if-elif-else)",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 200\nif m <= 25 or m >= 200:\n    print('AA')\nelif m <= 45 or m >= 150:\n    print('BB')\nelif m <= 65 or m >= 100:\n    print('CC')\nelse:\n    print('DD')",
+    "options": {
+      "a": "CC",
+      "b": "DD",
+      "c": "BB",
+      "d": "AA"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 46,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 6\nwhile m < 11:\n    print(m, end= '')\n    m = m + 1",
+    "options": {
+      "a": "6789",
+      "b": "5678910",
+      "c": "678910",
+      "d": "56789"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 47,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 2\nwhile m < 5:\n    print(m, end= '')\n    m += 2",
+    "options": {
+      "a": "24",
+      "b": "246",
+      "c": "2468",
+      "d": "248"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 48,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 1\nn = 5\nwhile n + m < 8:\n    m += 1\n    print(m, end= '')",
+    "options": {
+      "a": "123",
+      "b": "23",
+      "c": "234",
+      "d": "2345"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 49,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m, n = 2, 5\nwhile n < 10:\n    print(n, end= '')\n    m, n = n, m + n",
+    "options": {
+      "a": "25",
+      "b": "58",
+      "c": "579",
+      "d": "57"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 50,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'ABC'\nfor i in m:\n    print(i, end= ' ')",
+    "options": {
+      "a": "A",
+      "b": "ABC",
+      "c": "A B C",
+      "d": "I"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 51,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(7):\n    print(m, end= '')",
+    "options": {
+      "a": "0123456",
+      "b": "01234567",
+      "c": "123456",
+      "d": "1234567"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 52,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(6,9):\n    print(m, end= '')",
+    "options": {
+      "a": "67",
+      "b": "678",
+      "c": "6789",
+      "d": "5678"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 53,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(2,9,3):\n    print(m, end= '')",
+    "options": {
+      "a": "293",
+      "b": "369",
+      "c": "239",
+      "d": "258"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 54,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ('m', 'n', 'o', 'p')\nfor n in m:\n    print(n, end= ' ')",
+    "options": {
+      "a": "n",
+      "b": "mnop",
+      "c": "m n o p",
+      "d": "(‘m’, ‘n’, ‘o’, ‘p’)"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 55,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'m', 'n', 'o', 'p'}\nif 'n' in m:\n    print('n', end= ' ')",
+    "options": {
+      "a": "n",
+      "b": "mnop",
+      "c": "m n o p",
+      "d": "{‘m’, ‘n’, ‘o’, ‘p’}"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 56,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {45: 75, 55: 85}\nfor i in m:\n    print(i, end= ' ')",
+    "options": {
+      "a": "45 : 75",
+      "b": "45 55",
+      "c": "55 : 85",
+      "d": "75 85"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 57,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {45: 75, 55: 85}\nfor n, o in m.items():\n    print(n, o, end= ' ')",
+    "options": {
+      "a": "45 : 75, 55 : 85",
+      "b": "{45 : 75, 55 : 85}",
+      "c": "45 55 75 85",
+      "d": "45 75 55 85"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 58,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(6,9):\n    print(m, end= '')\n    if m = = 8:\n    break",
+    "options": {
+      "a": "67",
+      "b": "679",
+      "c": "678",
+      "d": "6789"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 59,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "for m in range(6,9):\n    if m = = 8:\n    continue\n    print(m, end= '')",
+    "options": {
+      "a": "67",
+      "b": "679",
+      "c": "678",
+      "d": "6789"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 60,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [15, 65, 105]\nn = 5 in m\nprint(n)",
+    "options": {
+      "a": "15",
+      "b": "[15, 65, 105]",
+      "c": "True",
+      "d": "False"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 61,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 18\ndef nop():\n    print(m)\nnop()",
+    "options": {
+      "a": "m",
+      "b": "nop",
+      "c": "18",
+      "d": "mnop"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 62,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def abc(m, n):\n    print(m - n)\nabc(14, 5)",
+    "options": {
+      "a": "(14, 5)",
+      "b": "145",
+      "c": "m - n",
+      "d": "9"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 63,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def abc(m= 15, n= 10, o= 5):\n    print(m * n + o)\nabc()",
+    "options": {
+      "a": "150",
+      "b": "155",
+      "c": "0",
+      "d": "225"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 64,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def abc(m, n):\n    return m * n\nprint(abc(7, 3))",
+    "options": {
+      "a": "21",
+      "b": "7, 3",
+      "c": "(7, 3)",
+      "d": "m * n"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 65,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "def p(m, n):\n    return m / n\no = p(50, 5)\nprint(o)",
+    "options": {
+      "a": "5",
+      "b": "50 / 5",
+      "c": "10.0",
+      "d": "10"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 66,
+    "category": "Dictionaries & Sets",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = {'Listen':'Music', 'Play': 'Games'}\nn = m['Music']\nprint(n)",
+    "options": {
+      "a": "Music",
+      "b": "KeyError",
+      "c": "m[‘Music’]",
+      "d": "Listen"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 67,
+    "category": "Functions & Lambdas",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = lambda n: n**3\nprint(m(6))",
+    "options": {
+      "a": "6",
+      "b": "18",
+      "c": "36",
+      "d": "216"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 68,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "import os",
+    "options": {
+      "a": "Displays the operating system name and version",
+      "b": "Imports the os module",
+      "c": "Imports the os function",
+      "d": "Imports the directory named os"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 69,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play'\nn = 'Games'\nprint(n + m)",
+    "options": {
+      "a": "Play",
+      "b": "Games",
+      "c": "PlayGames",
+      "d": "GamesPlay"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 70,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play'\nn = m * 2\nprint(n)",
+    "options": {
+      "a": "PlayPlay",
+      "b": "Play",
+      "c": "Play2",
+      "d": "Play*2"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 71,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play Games'\nn = m[6]\nprint(n)",
+    "options": {
+      "a": "m[6]",
+      "b": "Play Games",
+      "c": "a",
+      "d": "G"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 72,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play Games'\nn = m[7:9]\nprint(n)",
+    "options": {
+      "a": "ame",
+      "b": "Play Games",
+      "c": "Game",
+      "d": "me"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 73,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'Play Games'\nn = m[:]\nprint(n)",
+    "options": {
+      "a": "ame",
+      "b": "Play Games",
+      "c": "Play",
+      "d": "Games"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 74,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "m = open('games.txt', 'r')",
+    "options": {
+      "a": "Opens an existing text file named games.txt to read",
+      "b": "Opens an existing text file named games.txt to write",
+      "c": "Opens a new file named games.txt to read",
+      "d": "Opens an existing text file named games.txt to append"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 75,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "m = open('games.txt', 'w')",
+    "options": {
+      "a": "Opens a new file named games.txt to write",
+      "b": "Opens or creates a text file named games.txt to write",
+      "c": "Opens or creates a text file named games.txt to read",
+      "d": "Opens or creates a text file named games.txt to append"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 76,
+    "category": "File I/O & Modules",
+    "prompt": "What does the following statement do?",
+    "code": "x = open('games.txt', 'a')",
+    "options": {
+      "a": "Opens a new file named games.txt to append",
+      "b": "Opens or creates a text file named games.txt to write",
+      "c": "Opens or creates a text file named games.txt to read",
+      "d": "Opens or creates a text file named games.txt to append"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 77,
+    "category": "File I/O & Modules",
+    "prompt": "Who is the creator of Python?",
+    "code": "",
+    "options": {
+      "a": "Albert Einstein",
+      "b": "Monty Python",
+      "c": "Leonardo da Vinci",
+      "d": "Guido Van Rossum"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 78,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = False\nn = True\no = False\nprint(m and n and o)",
+    "options": {
+      "a": "m and n",
+      "b": "True",
+      "c": "False",
+      "d": "Error"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 79,
+    "category": "Arithmetic & Operators",
+    "prompt": "In the order of precedence, which of the operation will be completed first in the following statement?",
+    "code": "7 * 4 + 9 - 2 / 3",
+    "options": {
+      "a": "Addition",
+      "b": "Subtraction",
+      "c": "Multiplication",
+      "d": "Division"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 80,
+    "category": "Arithmetic & Operators",
+    "prompt": "In the order of precedence, which of the operation will be completed last in the following statement?",
+    "code": "7 * 4 + 9 - 2 / 3",
+    "options": {
+      "a": "Addition",
+      "b": "Subtraction",
+      "c": "Multiplication",
+      "d": "Division"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 81,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 36 / 4 % 2 * 5**3\nprint(m)",
+    "options": {
+      "a": "125.0",
+      "b": "0",
+      "c": "36",
+      "d": "14.0"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 82,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 8 / 4 * 10 + 6 **2\nprint(m)",
+    "options": {
+      "a": "32",
+      "b": "45.0",
+      "c": "56.0",
+      "d": "0.0"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 83,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [4, 8]\nprint(m * 3)",
+    "options": {
+      "a": "[4, 8]",
+      "b": "[4, 8, 4, 8]",
+      "c": "[4, 8] * 3",
+      "d": "[4, 8, 4, 8, 4, 8]"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 84,
+    "category": "Data Types & Variables",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 67\nn = m\nm = 72\nprint(m, n)",
+    "options": {
+      "a": "67 72",
+      "b": "72 67",
+      "c": "7267",
+      "d": "72 72"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 85,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 20 * 10 // 30\nn = 20 * 10.0 // 40\no = 20.0 * 10 / 50\nprint(m, n, o)",
+    "options": {
+      "a": "6.5 5.0 4.5",
+      "b": "6.0 5.0 4",
+      "c": "5 6.0 4.0",
+      "d": "6 5.0 4.0"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 86,
+    "category": "Loops & Iterations",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 2\nfor n in range(3, 15, 5):\n    n += m + 2\nprint(n)",
+    "options": {
+      "a": "14",
+      "b": "16",
+      "c": "17",
+      "d": "19"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 87,
+    "category": "Booleans & Comparisons",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = False\nprint(m or not m)",
+    "options": {
+      "a": "a",
+      "b": "False",
+      "c": "not a",
+      "d": "True"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 88,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = min(50, 25, 65, 0, 99)\nprint(m)",
+    "options": {
+      "a": "0",
+      "b": "99",
+      "c": "25",
+      "d": "(50, 25, 65, 0, 99)"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 89,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [50, 25, 65, 0, 99]\nn = max(m)\nprint(n)",
+    "options": {
+      "a": "0",
+      "b": "99",
+      "c": "25",
+      "d": "(50, 25, 65, 0, 99)"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 90,
+    "category": "Loops & Iterations",
+    "prompt": "How many times will “Music” be printed after the following statements?",
+    "code": "for i in range(3, 7):\n    print('Music')",
+    "options": {
+      "a": "3",
+      "b": "4",
+      "c": "5",
+      "d": "6"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 91,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 39\nn = 61\no = (m + n) // 2\nprint(o)",
+    "options": {
+      "a": "40.0",
+      "b": "50.0",
+      "c": "50",
+      "d": "55"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 92,
+    "category": "Arithmetic & Operators",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 10*10**1\nprint(m)",
+    "options": {
+      "a": "10",
+      "b": "1",
+      "c": "1000",
+      "d": "100"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 93,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = []\nfor n in range(6):\n    m.append(n*3)\nprint(m)",
+    "options": {
+      "a": "[3, 6, 9, 12, 15]",
+      "b": "[0, 3, 6, 9, 12]",
+      "c": "[0, 3, 6, 9, 12, 15]",
+      "d": "[]"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 94,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [n*4 for n in range(3)]\nprint(m)",
+    "options": {
+      "a": "[0, 0, 0]",
+      "b": "[0, 4, 8]",
+      "c": "[0, 4, 8, 12]",
+      "d": "[0, 4, 8, 12, 16]"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 95,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [-5, -2, 0, 3, 4]\nprint([n*2 for n in m])",
+    "options": {
+      "a": "[-10, -4, 0, 6, 8]",
+      "b": "[10, 4, 0, 6, 8]",
+      "c": "[-10, -4, 0, 6]",
+      "d": "[-10, -4, 0]"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 96,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [5, 10, 35]\ndel m[:]\nprint(m)",
+    "options": {
+      "a": "[5, 10, 35]",
+      "b": "[]",
+      "c": "[5, 35]",
+      "d": "5, 10, 35"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 97,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = 'A'\nn = 'B'\no = 'C'\np = [m, n, o]\nprint(p)",
+    "options": {
+      "a": "[‘C’, ‘B’, ‘A’]",
+      "b": "‘C’, ‘A’, ‘B’",
+      "c": "[‘C’, ‘A’, ‘B’]",
+      "d": "[‘A’, ‘B’, ‘C’]"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 98,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = list(range(7,10))\nprint(m)",
+    "options": {
+      "a": "[7, 8, 9, 10]",
+      "b": "list([7, 8, 9])",
+      "c": "[7, 8, 9]",
+      "d": "789"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 99,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = [10, 25, 35]\nn = sum(m)\nprint(n)",
+    "options": {
+      "a": "35",
+      "b": "25",
+      "c": "10",
+      "d": "70"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 100,
+    "category": "Strings & Slicing",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['Games', 'in', 'Python']\nn = 'Play' + m[0] + m[1] + m[2]\nprint(n)",
+    "options": {
+      "a": "PlayGamesinPython",
+      "b": "Play Games in Python",
+      "c": "Games in Python",
+      "d": "GamesinPython"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 101,
+    "category": "Lists & Sequences",
+    "prompt": "What will be the output after the following statements?",
+    "code": "m = ['Play']\nn = ['Games', 'in', 'Python']\no = m + n\nprint(o)",
+    "options": {
+      "a": "[‘Games’, ‘in’, ‘Python’, ‘Play’]",
+      "b": "[‘Play Games’, ‘in’, ‘Python’]",
+      "c": "[‘Play’, ‘Games’, ‘in’, ‘Python’]",
+      "d": "[‘PlayGames’, ‘in’, ‘Python’]"
+    },
+    "answer": "c"
+  }
+]

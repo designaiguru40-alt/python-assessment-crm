@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum AI • Python 3 Assessment & Student CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top App Navigation Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <span class="brand-badge">QUANTUM AI</span>
+        <div>
+          <div class="brand-title">Python 3 Assessment Engine</div>
+          <span class="brand-subtitle">101 MCQs Automated Evaluation & Student CRM</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs: Test vs CRM -->
+      <nav class="nav-tabs">
+        <button id="tab-test" class="nav-tab-btn active">
+          📝 Student Test Portal
+        </button>
+        <button id="tab-crm" class="nav-tab-btn">
+          📊 Faculty CRM & Records
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button id="btn-fullscreen" class="header-btn" title="Toggle Fullscreen" onclick="toggleFullScreen()">⛶</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="app-main">
+
+    <!-- ==========================================================
+         VIEW 1: WELCOME & REGISTRATION SCREEN
+         ========================================================== -->
+    <section id="view-welcome" class="view-section active">
+      <div class="welcome-card-grid">
+        <!-- Guidelines & Exam Info -->
+        <div class="welcome-info">
+          <span class="exam-pill">Official Certification Exam</span>
+          <h1>Python 3 Competency Test</h1>
+          <p class="lead">Beginner to Intermediate Python 3 assessment covering Core Syntax, Data Structures, Logic, and Built-ins.</p>
+
+          <div class="guidelines-list">
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>101 Verified Questions:</strong> Real industry questions from Python3 101 MCQ (S. C. Lewis).</div>
+            </div>
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>Instant Automated Scoring:</strong> Exact answer key evaluation with topic-by-topic analytics.</div>
+            </div>
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>No Negative Marking:</strong> 1 mark per correct answer. All questions are multiple choice (A/B/C/D).</div>
+            </div>
+            <div class="guideline-item">
+              <span class="icon">✓</span>
+              <div><strong>Official Scorecard & Certificate:</strong> Downloadable and printable report for student portfolio.</div>
+            </div>
+          </div>
+
+          <div class="stats-ribbon">
+            <div class="stat-box">
+              <div class="num">101</div>
+              <div class="label">Total Questions</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">90 Mins</div>
+              <div class="label">Time Allowed</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">50%</div>
+              <div class="label">Passing Score</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Registration Form -->
+        <div class="reg-form-card">
+          <h2>Student Registration</h2>
+          <p>Bache ki details daalkar test shuru kijiye:</p>
+
+          <form id="student-reg-form">
+            <div class="form-group">
+              <label for="input-name">Student Full Name *</label>
+              <input type="text" id="input-name" class="form-input" placeholder="e.g. Pooja Sharma / Arjun Verma" required>
+            </div>
+
+            <div class="form-group">
+              <label for="input-roll">Roll No / Student ID</label>
+              <input type="text" id="input-roll" class="form-input" placeholder="e.g. QA-2026-089">
+            </div>
+
+            <div class="form-group">
+              <label for="input-batch">Course / Batch</label>
+              <select id="input-batch" class="form-input">
+                <option value="Python 3 & SQL Foundation">Python 3 & SQL Foundation</option>
+                <option value="Data Analytics Professional">Data Analytics Professional</option>
+                <option value="Generative AI & Machine Learning">Generative AI & Machine Learning</option>
+                <option value="Weekend Masterclass Batch">Weekend Masterclass Batch</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="input-duration">Test Time Limit</label>
+              <select id="input-duration" class="form-input">
+                <option value="90">90 Minutes (Standard Exam)</option>
+                <option value="60">60 Minutes (Fast Track)</option>
+                <option value="120">120 Minutes (Extended)</option>
+                <option value="999">Unlimited Practice Time</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              🚀 Start Examination
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 2: LIVE TEST TAKING INTERFACE
+         ========================================================== -->
+    <section id="view-exam" class="view-section">
+      <div class="exam-layout">
+        
+        <!-- Left: Current Question Area -->
+        <div class="exam-main">
+          <!-- Meta Bar -->
+          <div class="exam-meta-bar">
+            <div class="student-badge-info">
+              <div id="exam-student-avatar" class="avatar-circle">S</div>
+              <div>
+                <div id="exam-student-name" class="student-meta-name">Student Name</div>
+                <div id="exam-student-roll" class="student-meta-roll">Roll: QA-101 • Batch</div>
+              </div>
+            </div>
+            <div id="exam-timer" class="timer-box">⏱️ 90:00</div>
+          </div>
+
+          <!-- Question Card -->
+          <div class="question-card">
+            <div class="question-header">
+              <span id="q-number" class="question-number-badge">Question 1 of 101</span>
+              <span id="q-category" class="category-tag">Arithmetic & Operators</span>
+            </div>
+
+            <div id="q-prompt" class="question-prompt">
+              What will be the output after the following statements?
+            </div>
+
+            <!-- Monospace Code Box -->
+            <div id="q-code-wrapper" class="code-wrapper">
+              <div class="code-header">
+                <span>Python 3 Code</span>
+                <span style="font-size: 0.7rem; color: #64748b;">Snippet</span>
+              </div>
+              <pre id="q-code" class="code-content"></pre>
+            </div>
+
+            <!-- Options Grid (A, B, C, D) -->
+            <div id="q-options-grid" class="options-grid"></div>
+          </div>
+
+          <!-- Exam Action Toolbar -->
+          <div class="exam-actions">
+            <div style="display: flex; gap: 0.5rem;">
+              <button id="btn-prev" class="btn-secondary">⬅️ Previous</button>
+              <button id="btn-clear" class="btn-secondary">Clear Choice</button>
+              <button id="btn-mark" class="btn-secondary btn-review">☆ Mark Review</button>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button id="btn-next" class="btn-secondary">Next ➡️</button>
+              <button id="btn-submit-exam" class="btn-submit">Submit Test 🏁</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Palette Sidebar -->
+        <aside class="exam-sidebar">
+          <div class="palette-stats">
+            <div class="stat-pill"><span class="dot answered"></span> Answered: <b id="stat-answered-count">0</b></div>
+            <div class="stat-pill"><span class="dot unanswered"></span> Unanswered: <b id="stat-unanswered-count">101</b></div>
+            <div class="stat-pill"><span class="dot marked"></span> Marked: <b id="stat-marked-count">0</b></div>
+            <div class="stat-pill"><span class="dot current"></span> Current Q</div>
+          </div>
+
+          <div class="palette-filters">
+            <button class="filter-btn active" data-filter="all">All (101)</button>
+            <button class="filter-btn" data-filter="answered">Answered</button>
+            <button class="filter-btn" data-filter="unanswered">Pending</button>
+            <button class="filter-btn" data-filter="marked">Marked</button>
+          </div>
+
+          <!-- 101 Question Palette Grid -->
+          <div id="exam-palette" class="palette-grid"></div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 3: SCORECARD & PERFORMANCE ANALYTICS
+         ========================================================== -->
+    <section id="view-scorecard" class="view-section">
+      <div class="scorecard-container">
+        
+        <div class="scorecard-hero">
+          <span id="res-badge" class="result-badge badge-distinction">🌟 Distinction</span>
+          <h1 id="res-student-title">Student Assessment Scorecard</h1>
+          <p id="res-tagline" class="student-tagline">Quantum AI Certification Performance Report</p>
+
+          <div class="score-display-wrapper">
+            <span id="res-score" class="score-number">92</span>
+            <span class="score-total">/ 101</span>
+          </div>
+          <div id="res-percentage" class="score-percentage">Percentage: 91.1% (Distinction)</div>
+
+          <div class="metrics-row">
+            <div class="metric-card correct">
+              <div id="res-correct" class="val">92</div>
+              <div class="lbl">Correct</div>
+            </div>
+            <div class="metric-card incorrect">
+              <div id="res-incorrect" class="val">6</div>
+              <div class="lbl">Incorrect</div>
+            </div>
+            <div class="metric-card skipped">
+              <div id="res-skipped" class="val">3</div>
+              <div class="lbl">Skipped</div>
+            </div>
+            <div class="metric-card time">
+              <div id="res-time" class="val">48m 12s</div>
+              <div class="lbl">Time Taken</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic-wise Breakdown -->
+        <div class="breakdown-card">
+          <h3>📊 Topic-Wise Mastery Breakdown</h3>
+          <div id="category-breakdown-bars" class="category-bars"></div>
+        </div>
+
+        <!-- Scorecard Action Buttons -->
+        <div class="scorecard-actions">
+          <button id="btn-print-scorecard" class="btn-secondary">🖨️ Print / Download PDF</button>
+          <button id="btn-review-answers" class="btn-secondary">🔍 Review All 101 Answers</button>
+          <button id="btn-retake-test" class="btn-primary" style="width: auto; padding: 0.75rem 1.75rem;">🔄 Start New Test</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 4: QUESTION-BY-QUESTION REVIEW
+         ========================================================== -->
+    <section id="view-review" class="view-section">
+      <div class="review-container">
+        <div class="review-header-bar">
+          <div>
+            <h2 style="font-size: 1.35rem; font-weight: 800;">Answer Key & Detailed Solution Review</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Official PDF Answer Key ke anusar evaluation</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="filter-btn review-filter-btn active" data-filter="all">All (101)</button>
+            <button class="filter-btn review-filter-btn" data-filter="incorrect">Incorrect Only</button>
+            <button class="filter-btn review-filter-btn" data-filter="correct">Correct Only</button>
+            <button class="filter-btn review-filter-btn" data-filter="skipped">Skipped Only</button>
+          </div>
+        </div>
+
+        <div id="review-items-container" class="review-items-list"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VIEW 5: TEACHER CRM DASHBOARD
+         ========================================================== -->
+    <section id="view-crm" class="view-section">
+      <div class="crm-container">
+        
+        <div class="crm-header-row">
+          <div>
+            <h1>Faculty Assessment CRM</h1>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Track all student tests, scores, batch averages, and export records.</p>
+          </div>
+
+          <div class="crm-toolbar">
+            <button id="btn-export-csv" class="btn-secondary">📥 Export to CSV (Excel)</button>
+            <button id="btn-clear-crm" class="btn-secondary" style="color: var(--danger);">🗑️ Clear CRM Data</button>
+          </div>
+        </div>
+
+        <!-- CRM Stat Cards -->
+        <div class="crm-stats-grid">
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">👥</div>
+            <div class="crm-stat-info">
+              <div id="crm-total-count" class="num">0</div>
+              <div class="lbl">Students Tested</div>
+            </div>
+          </div>
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">📈</div>
+            <div class="crm-stat-info">
+              <div id="crm-avg-score" class="num">0%</div>
+              <div class="lbl">Batch Average</div>
+            </div>
+          </div>
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">🏆</div>
+            <div class="crm-stat-info">
+              <div id="crm-high-score" class="num">0 / 101</div>
+              <div class="lbl">Highest Score</div>
+            </div>
+          </div>
+          <div class="crm-stat-card">
+            <div class="crm-stat-icon">🎯</div>
+            <div class="crm-stat-info">
+              <div id="crm-pass-rate" class="num">0%</div>
+              <div class="lbl">Pass Rate (>=50%)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRM Submissions Table -->
+        <div class="crm-table-card">
+          <div class="crm-table-controls">
+            <input type="text" id="crm-search" class="form-input search-input" placeholder="🔍 Search student name, roll no, or batch...">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Auto-saved locally in browser</span>
+          </div>
+
+          <div class="crm-table-wrapper">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Roll / ID</th>
+                  <th>Batch</th>
+                  <th>Score</th>
+                  <th>Time Taken</th>
+                  <th>Result</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="crm-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Fullscreen helper -->
+  <script>
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+  </script>
+
+  <!-- Load Data and Scripts -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
